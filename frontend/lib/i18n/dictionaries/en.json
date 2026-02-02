@@ -1,0 +1,25 @@
+{
+  "common": {
+    "siteName": "Department of Islamic Affairs - Sharjah",
+    "siteNameShort": "Islamic Affairs",
+    "nav": {
+      "home": "Home",
+      "about": "About",
+      "services": "Services",
+      "contact": "Contact"
+    },
+    "languageSwitcher": "العربية",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "home": {
+    "meta": {
+      "title": "Home",
+      "description": "Department of Islamic Affairs in the Emirate of Sharjah"
+    },
+    "hero": {
+      "title": "Department of Islamic Affairs",
+      "subtitle": "Emirate of Sharjah"
+    }
+  }
+}
