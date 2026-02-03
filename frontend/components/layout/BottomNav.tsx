@@ -9,6 +9,7 @@ interface BottomNavProps {
     contactUs: string;
     happinessMeter: string;
     prayerTimes: string;
+    mosquesGuide: string;
   };
 }
 
@@ -88,6 +89,27 @@ export function BottomNav({ locale, dict }: BottomNavProps) {
                   />
                 </svg>
                 <span className="block text-[.65rem] mt-1">{dict.services}</span>
+              </Link>
+
+              {/* Mosques Guide */}
+              <Link
+                href={`/${locale}/mosques`}
+                className="group inline-flex flex-col items-center justify-center h-[60px] px-4 text-zinc-700 rounded-full transition-all duration-300 hover:bg-white/50 hover:shadow-[inset_0px_0px_3px_2px_rgb(244_244_244)]"
+              >
+                <svg
+                  className="h-6 w-6 transition-transform duration-300 group-hover:scale-110"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={1.5}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0 0 12 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75Z"
+                  />
+                </svg>
+                <span className="block text-[.65rem] mt-1">{dict.mosquesGuide}</span>
               </Link>
 
               {/* Prayer Times */}

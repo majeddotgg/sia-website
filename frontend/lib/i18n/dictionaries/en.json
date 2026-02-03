@@ -28,7 +28,8 @@
       "services": "Services",
       "contactUs": "Contact Us",
       "happinessMeter": "Happiness",
-      "prayerTimes": "Prayer Times"
+      "prayerTimes": "Prayer Times",
+      "mosquesGuide": "Mosques"
     },
     "footer": {
       "copyright": "© 2026 Department of Islamic Affairs - Sharjah. All Rights Reserved",
@@ -178,6 +179,161 @@
     },
     "applyNow": "Apply Now",
     "learnMore": "View"
+  },
+  "careers": {
+    "meta": {
+      "title": "Careers",
+      "description": "Job opportunities at the Department of Islamic Affairs in Sharjah"
+    },
+    "hero": {
+      "title": "Join Our Team",
+      "subtitle": "Be part of a meaningful mission serving the community"
+    },
+    "whyJoin": {
+      "title": "Why Join Us?",
+      "description": "At the Department of Islamic Affairs in Sharjah, we offer a unique opportunity to contribute to the spiritual and social well-being of our community. Our employees are part of a dedicated team that works to spread Islamic values, maintain mosques, and provide essential religious services to the people of Sharjah."
+    },
+    "benefits": {
+      "title": "Benefits & Perks",
+      "items": [
+        {
+          "title": "Competitive Salary",
+          "description": "We offer competitive compensation packages aligned with government standards"
+        },
+        {
+          "title": "Professional Development",
+          "description": "Continuous learning opportunities and career growth programs"
+        },
+        {
+          "title": "Work-Life Balance",
+          "description": "Flexible working hours and generous leave policies"
+        },
+        {
+          "title": "Health Insurance",
+          "description": "Comprehensive health coverage for you and your family"
+        },
+        {
+          "title": "Meaningful Work",
+          "description": "Make a positive impact in the community through your work"
+        },
+        {
+          "title": "Supportive Environment",
+          "description": "A collaborative and respectful workplace culture"
+        }
+      ]
+    },
+    "positions": {
+      "title": "Open Positions",
+      "applyButton": "Apply Now",
+      "noPositions": "No open positions at the moment. Please check back later.",
+      "items": [
+        {
+          "title": "Imam",
+          "location": "Sharjah",
+          "type": "Full-time"
+        },
+        {
+          "title": "Islamic Education Teacher",
+          "location": "Sharjah",
+          "type": "Full-time"
+        },
+        {
+          "title": "Administrative Assistant",
+          "location": "Sharjah",
+          "type": "Full-time"
+        }
+      ]
+    },
+    "cta": {
+      "title": "Interested in Joining Us?",
+      "description": "Send us your CV and we'll contact you when a suitable position becomes available",
+      "button": "Contact Us"
+    }
+  },
+  "suggestion": {
+    "meta": {
+      "title": "Submit a Suggestion",
+      "description": "Share your suggestions to improve the services of the Department of Islamic Affairs"
+    },
+    "hero": {
+      "title": "Submit a Suggestion",
+      "subtitle": "Your feedback helps us continuously improve our services"
+    },
+    "form": {
+      "name": "Full Name",
+      "namePlaceholder": "Enter your full name",
+      "email": "Email Address",
+      "emailPlaceholder": "example@email.com",
+      "phone": "Phone Number",
+      "phonePlaceholder": "05XXXXXXXX",
+      "subject": "Suggestion Subject",
+      "subjectPlaceholder": "Enter the subject of your suggestion",
+      "message": "Suggestion Details",
+      "messagePlaceholder": "Write the details of your suggestion here...",
+      "submit": "Submit Suggestion",
+      "submitting": "Submitting...",
+      "successTitle": "Your suggestion has been submitted",
+      "successMessage": "Thank you for sharing. Your suggestion will be reviewed and we will respond soon.",
+      "sendAnother": "Submit another suggestion",
+      "errors": {
+        "nameRequired": "Name is required",
+        "emailRequired": "Email is required",
+        "emailInvalid": "Invalid email address",
+        "phoneRequired": "Phone number is required",
+        "phoneInvalid": "Invalid phone number",
+        "subjectRequired": "Subject is required",
+        "messageRequired": "Message is required",
+        "messageMin": "Message must be at least 10 characters"
+      }
+    },
+    "info": {
+      "title": "We Value Your Input",
+      "description": "All suggestions are reviewed by our dedicated team. We always strive to improve our services based on your valuable feedback."
+    }
+  },
+  "contact": {
+    "meta": {
+      "title": "Contact Us",
+      "description": "Contact the Department of Islamic Affairs in Sharjah"
+    },
+    "hero": {
+      "title": "Feedback & Complaints",
+      "subtitle": "We appreciate every opinion, suggestion, and concern shared by our community — all of it helps us serve you better"
+    },
+    "call": {
+      "description": "For non-urgent inquiries, general information, or support",
+      "label": "Call Now",
+      "phone": "065055888"
+    },
+    "feedback": {
+      "suggestion": {
+        "title": "Suggestion",
+        "description": "Your feedback helps us continuously improve our services"
+      },
+      "note": {
+        "title": "Feedback",
+        "description": "Your words motivate us to deliver our best"
+      },
+      "complaint": {
+        "title": "Complaint",
+        "description": "Our support team is ready to help you resolve issues quickly and ensure your satisfaction"
+      }
+    },
+    "info": {
+      "title": "Contact Information",
+      "address": {
+        "label": "Address",
+        "value": "Sharjah, United Arab Emirates"
+      },
+      "email": {
+        "label": "Email",
+        "value": "info@sia.shj.ae"
+      },
+      "hours": {
+        "label": "Working Hours",
+        "value": "Sunday - Thursday: 7:30 AM - 2:30 PM"
+      }
+    }
   },
   "home": {
     "meta": {

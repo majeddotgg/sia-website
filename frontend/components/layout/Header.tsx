@@ -15,6 +15,7 @@ export async function Header({ locale }: HeaderProps) {
     { label: dict.common.nav.home, href: `/${locale}/` },
     { label: dict.common.nav.about, href: `/${locale}/about/` },
     { label: dict.common.nav.services, href: `/${locale}/services/` },
+    { label: dict.common.nav.jobs, href: `/${locale}/careers/` },
     { label: dict.common.nav.contact, href: `/${locale}/contact/` },
   ];
 

@@ -44,6 +44,7 @@ Bilingual Arabic/English. Static export deployed to cPanel (no Node.js runtime).
 | Language    | TypeScript 5 (strict mode)           |
 | Styling     | Tailwind CSS v4 (@tailwindcss/postcss) |
 | React       | React 19.2.3                         |
+| Forms       | react-hook-form + zod + @hookform/resolvers |
 | Linting     | ESLint 9 (flat config)              |
 | Build       | Static export → `out/` directory     |
 | Hosting     | cPanel (Apache, PHP available)       |
@@ -68,7 +69,10 @@ frontend/
 ├── components/
 │   ├── ui/                 # Generic UI components (Button, Card, etc.)
 │   ├── layout/             # Header, Footer, Sidebar, Navigation
-│   └── sections/           # Page-specific sections (Hero, Services, etc.)
+│   ├── sections/           # Page-specific sections (Hero, Services, etc.)
+│   └── forms/              # Form components (see components/forms/CLAUDE.md)
+│       ├── ui/             # Reusable form inputs (Input, Select, etc.)
+│       └── services/       # Service-specific forms (HajjForm, etc.)
 ├── lib/
 │   ├── i18n/
 │   │   ├── config.ts       # Locale list, default locale, types
@@ -76,6 +80,10 @@ frontend/
 │   │   └── dictionaries/
 │   │       ├── ar.json     # Arabic translations
 │   │       └── en.json     # English translations
+│   ├── schemas/            # Zod validation schemas
+│   │   ├── common.ts       # Shared schemas (phone, email, Emirates ID)
+│   │   ├── feedback.ts     # Feedback/complaints schemas
+│   │   └── index.ts        # Schema exports
 │   └── utils.ts            # Shared utility functions
 ├── types/
 │   └── index.ts            # Shared TypeScript types
@@ -192,3 +200,72 @@ After every build, verify:
 - Types: PascalCase for types/interfaces (`ServiceItem`)
 - Translation keys: dot-notation (`home.hero.title`)
 - CSS: Tailwind utility classes only — no custom CSS files per component
+
+---
+
+## Forms Architecture
+
+**IMPORTANT**: This project heavily relies on forms for services. Follow the patterns below.
+
+### Key Files
+- **Guide**: `components/forms/CLAUDE.md` — Full forms documentation
+- **UI Components**: `components/forms/ui/` — Reusable form inputs
+- **Schemas**: `lib/schemas/` — Zod validation schemas
+- **Skill Reference**: `/Users/majed/.claude/skills/react-hook-form-zod`
+
+### Quick Pattern
+
+```typescript
+// 1. Define schema (lib/schemas/myform.ts)
+import { z } from 'zod';
+
+export const mySchema = z.object({
+  name: z.string().min(2, 'الاسم مطلوب'),
+  email: z.string().email('البريد غير صالح'),
+});
+
+export type MyFormData = z.infer<typeof mySchema>;
+
+// 2. Create form component (components/forms/services/MyForm.tsx)
+'use client';
+
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { mySchema, type MyFormData } from '@/lib/schemas/myform';
+import { FormField, Input, SubmitButton } from '@/components/forms';
+
+export function MyForm({ dict }: { dict: FormDict }) {
+  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<MyFormData>({
+    resolver: zodResolver(mySchema),
+    defaultValues: { name: '', email: '' }, // REQUIRED!
+  });
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <FormField label={dict.name} error={errors.name?.message} required>
+        {({ id, hasError }) => (
+          <Input id={id} {...register('name')} hasError={hasError} />
+        )}
+      </FormField>
+      <SubmitButton loading={isSubmitting}>{dict.submit}</SubmitButton>
+    </form>
+  );
+}
+```
+
+### Form Rules
+- ✅ Always set `defaultValues` for all fields
+- ✅ Use `z.infer<typeof schema>` for type inference
+- ✅ All labels/errors from dictionary (no hardcoded text)
+- ✅ Use `mode: 'onBlur'` for validation
+- ✅ Handle loading state with `isSubmitting`
+- ❌ Never skip `defaultValues` (causes React warnings)
+- ❌ Never use index as key in `useFieldArray`
+
+### Form Submission (Static Export)
+Since this is static export, forms submit to external backends:
+- **Simple forms**: Formspree, Getform
+- **Complex forms**: Custom API endpoint
+- **Fallback**: mailto: links
+
+See `components/forms/CLAUDE.md` for full documentation.
