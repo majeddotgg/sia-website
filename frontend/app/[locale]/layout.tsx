@@ -3,6 +3,8 @@ import { getDictionary } from '@/lib/i18n/dictionaries';
 import { IBM_Plex_Sans_Arabic } from 'next/font/google';
 import { Inter } from 'next/font/google';
 import { Header } from '@/components/layout/Header';
+import { Footer } from '@/components/layout/Footer';
+import { BottomNav } from '@/components/layout/BottomNav';
 import type { Metadata } from 'next';
 
 const arabicFont = IBM_Plex_Sans_Arabic({
@@ -47,6 +49,7 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  const dict = await getDictionary(locale as Locale);
   const dir = locale === 'ar' ? 'rtl' : 'ltr';
   const fontClass =
     locale === 'ar'
@@ -58,7 +61,8 @@ export default async function LocaleLayout({
       <body className={`${fontClass} font-sans antialiased`}>
         <Header locale={locale as Locale} />
         <main>{children}</main>
-        {/* Footer placeholder */}
+        <Footer locale={locale} dict={dict.common.footer} />
+        <BottomNav locale={locale} dict={dict.common.bottomNav} />
       </body>
     </html>
   );

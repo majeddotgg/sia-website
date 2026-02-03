@@ -27,6 +27,7 @@ export async function Header({ locale }: HeaderProps) {
       openMenuLabel={dict.common.openMenu}
       closeMenuLabel={dict.common.closeMenu}
       languageSwitcher={<LanguageSwitcher locale={locale} label={dict.common.languageSwitcher} />}
+      searchDict={dict.common.search}
     />
   );
 }

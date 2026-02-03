@@ -49,7 +49,7 @@ export function MobileMenu({
 
       {/* Panel */}
       <div
-        className={`fixed inset-y-0 z-50 w-72 bg-background shadow-xl transition-transform duration-300 ${
+        className={`fixed inset-y-0 z-50 w-full bg-background shadow-xl transition-transform duration-300 ${
           dir === 'rtl' ? 'end-0' : 'end-0'
         } ${
           open
@@ -62,9 +62,9 @@ export function MobileMenu({
       >
         {/* Close button */}
         <div className="flex h-16 items-center justify-between border-b border-foreground/10 px-4">
-          <span className="text-sm font-medium text-foreground/50">
+          {/* <span className="text-sm font-medium text-foreground/50">
             {closeMenuLabel}
-          </span>
+          </span> */}
           <button
             type="button"
             className="rounded-lg p-2 text-foreground/70 hover:bg-foreground/5"

@@ -21,3 +21,44 @@ body {
   background: var(--background);
   color: var(--foreground);
 }
+
+/* Liquid Glass Effect */
+.liquid-glass {
+  --border-radius: 100px;
+  border-radius: var(--border-radius);
+  pointer-events: none;
+}
+
+.liquid-glass--bend {
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  border-radius: var(--border-radius);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  z-index: 0;
+}
+
+.liquid-glass--face {
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 4px #00000026, 0 0 12px #00000014;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  z-index: 1;
+}
+
+.liquid-glass--edge {
+  border-radius: var(--border-radius);
+  box-shadow: inset -3px -1px #ffffff2b, inset 2px 0 #ffffff4d;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  z-index: 2;
+}

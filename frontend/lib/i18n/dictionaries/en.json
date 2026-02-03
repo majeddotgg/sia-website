@@ -6,11 +6,178 @@
       "home": "Home",
       "about": "About",
       "services": "Services",
+      "jobs": "Jobs",
       "contact": "Contact"
     },
     "languageSwitcher": "العربية",
     "openMenu": "Open menu",
-    "closeMenu": "Close menu"
+    "closeMenu": "Close menu",
+    "search": {
+      "searchPlaceholder": "Search for a mosque or service...",
+      "mosques": "Mosques",
+      "services": "Services",
+      "search": "Search",
+      "close": "Close",
+      "filters": {
+        "area": "Area",
+        "allAreas": "All Areas",
+        "areas": ["Sharjah", "Khorfakkan", "Kalba", "Dibba Al-Hisn", "Al Dhaid", "Al Madam", "Mleiha"]
+      }
+    },
+    "bottomNav": {
+      "services": "Services",
+      "contactUs": "Contact Us",
+      "happinessMeter": "Happiness",
+      "prayerTimes": "Prayer Times"
+    },
+    "footer": {
+      "copyright": "© 2026 Department of Islamic Affairs - Sharjah. All Rights Reserved",
+      "maintainedBy": "This website is supervised and maintained by the Department of Islamic Affairs",
+      "browserRecommendation": "Best viewed with Internet Explorer 11 and above, Mozilla Firefox, Safari and Chrome",
+      "lastUpdate": "Last Update: 01-01-2026 by Majed Abdullah",
+      "privacyPolicy": "Privacy Policy",
+      "termsAndConditions": "Terms and Conditions",
+      "newsletter": {
+        "title": "Receive Email Notifications",
+        "description": "Subscribe to our newsletter to get the latest news and updates",
+        "placeholder": "Email",
+        "subscribe": "Subscribe"
+      },
+      "social": {
+        "facebook": "Facebook",
+        "youtube": "YouTube",
+        "twitter": "Twitter",
+        "instagram": "Instagram"
+      }
+    }
+  },
+  "about": {
+    "meta": {
+      "title": "About Us",
+      "description": "About the Department of Islamic Affairs in the Emirate of Sharjah"
+    },
+    "hero": {
+      "title": "About the Department",
+      "subtitle": "Department of Islamic Affairs - Sharjah"
+    },
+    "intro": {
+      "title": "Who We Are",
+      "paragraph1": "The Department of Islamic Affairs in the Emirate of Sharjah was established by Emiri Decree No. (27) of 2008, issued by His Highness Sheikh Dr. Sultan bin Muhammad Al Qasimi, Member of the Supreme Council and Ruler of the Emirate of Sharjah – may God protect him. Subsequently, Emiri Decree No. (2) of 2010 was issued regarding the organization of Islamic affairs in Sharjah, entrusting it with preaching, guidance, awareness, and the care of mosques in the emirate.",
+      "paragraph2": "The Department of Islamic Affairs in Sharjah strives to convey the call of Allah Almighty with wisdom and good counsel, to facilitate the performance of congregational prayer rituals in mosques, and to provide all services and facilities that enable the performance of this obligation in the best possible manner in a spiritual atmosphere."
+    },
+    "vision": {
+      "title": "Vision",
+      "content": "Establishing the correct religious methodology and developing mosques to support national belonging and identity."
+    },
+    "mission": {
+      "title": "Mission",
+      "content": "We work to strengthen Islamic values and principles in society by spreading the correct teachings of religion and caring for mosques."
+    },
+    "values": {
+      "title": "Values",
+      "items": [
+        "Following, not innovating",
+        "Cooperation",
+        "Sincerity",
+        "Belonging and Excellence"
+      ]
+    }
+  },
+  "services": {
+    "meta": {
+      "title": "Services",
+      "description": "Services of the Department of Islamic Affairs in the Emirate of Sharjah"
+    },
+    "hero": {
+      "title": "Our Services",
+      "subtitle": "We offer a variety of services to serve the community"
+    },
+    "categories": {
+      "all": "All",
+      "individuals": "Individuals",
+      "organizations": "Organizations",
+      "students": "Students"
+    },
+    "items": {
+      "individuals": [
+        {
+          "title": "Hajj & Umrah Services",
+          "description": "Registration and inquiry about Hajj and Umrah missions",
+          "icon": "hajj"
+        },
+        {
+          "title": "Islamic Fatwas",
+          "description": "Request or inquire about religious rulings",
+          "icon": "fatwa"
+        },
+        {
+          "title": "Marriage Contracts",
+          "description": "Complete Islamic marriage contracts and documentation",
+          "icon": "marriage"
+        },
+        {
+          "title": "Mosque Booking",
+          "description": "Book mosques for events and religious lessons",
+          "icon": "mosque"
+        },
+        {
+          "title": "Family Counseling",
+          "description": "Consultations and advice for a happy family life",
+          "icon": "family"
+        },
+        {
+          "title": "New Muslim Services",
+          "description": "Services for new Muslims and religious guidance",
+          "icon": "newmuslim"
+        }
+      ],
+      "organizations": [
+        {
+          "title": "Charity Licensing",
+          "description": "Issue and renew charitable organization licenses",
+          "icon": "license"
+        },
+        {
+          "title": "Request Imam or Preacher",
+          "description": "Provide imams and preachers for institutions",
+          "icon": "imam"
+        },
+        {
+          "title": "Organize Lectures",
+          "description": "Organize religious lectures and seminars for institutions",
+          "icon": "lecture"
+        },
+        {
+          "title": "Community Partnerships",
+          "description": "Partnership programs with government and private institutions",
+          "icon": "partnership"
+        }
+      ],
+      "students": [
+        {
+          "title": "Quran Memorization Circles",
+          "description": "Join Quran memorization circles",
+          "icon": "quran"
+        },
+        {
+          "title": "Islamic Courses",
+          "description": "Courses in Islamic sciences and jurisprudence",
+          "icon": "courses"
+        },
+        {
+          "title": "Religious Competitions",
+          "description": "Participate in Quran and Sunnah competitions",
+          "icon": "competition"
+        },
+        {
+          "title": "Summer Camps",
+          "description": "Educational and religious summer programs for students",
+          "icon": "camp"
+        }
+      ]
+    },
+    "applyNow": "Apply Now",
+    "learnMore": "View"
   },
   "home": {
     "meta": {
@@ -20,6 +187,28 @@
     "hero": {
       "title": "Department of Islamic Affairs",
       "subtitle": "Emirate of Sharjah"
+    },
+    "services": {
+      "items": [
+        {
+          "title": "Hajj & Umrah Services",
+          "description": "Register and inquire about Hajj and Umrah services"
+        },
+        {
+          "title": "Islamic Fatwas",
+          "description": "Request or inquire about Islamic religious rulings"
+        },
+        {
+          "title": "Marriage Services",
+          "description": "Marriage contracts and religious certifications"
+        },
+        {
+          "title": "Mosque Services",
+          "description": "Book mosques and find their locations"
+        }
+      ],
+      "exploreMore": "Explore More",
+      "exploreMoreDescription": "Explore more department services"
     }
   }
 }

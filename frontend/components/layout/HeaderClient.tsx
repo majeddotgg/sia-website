@@ -1,12 +1,26 @@
 'use client';
 
-import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { useState, type ReactNode } from 'react';
 import Link from 'next/link';
 import { MobileMenu } from './MobileMenu';
+import { SearchModal } from './SearchModal';
 
 interface NavLink {
   label: string;
   href: string;
+}
+
+interface SearchDict {
+  searchPlaceholder: string;
+  mosques: string;
+  services: string;
+  search: string;
+  filters: {
+    area: string;
+    allAreas: string;
+    areas: string[];
+  };
+  close: string;
 }
 
 interface HeaderClientProps {
@@ -17,6 +31,7 @@ interface HeaderClientProps {
   openMenuLabel: string;
   closeMenuLabel: string;
   languageSwitcher: ReactNode;
+  searchDict: SearchDict;
 }
 
 export function HeaderClient({
@@ -27,88 +42,89 @@ export function HeaderClient({
   openMenuLabel,
   closeMenuLabel,
   languageSwitcher,
+  searchDict,
 }: HeaderClientProps) {
-  const [visible, setVisible] = useState(true);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const lastScrollY = useRef(0);
-
-  useEffect(() => {
-    function handleScroll() {
-      const currentY = window.scrollY;
-      if (currentY < 10) {
-        setVisible(true);
-      } else if (currentY > lastScrollY.current) {
-        setVisible(false);
-      } else {
-        setVisible(true);
-      }
-      lastScrollY.current = currentY;
-    }
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-50 border-b border-foreground/10 bg-background/95 backdrop-blur transition-transform duration-300 ${
-          visible ? 'translate-y-0' : '-translate-y-full'
-        }`}
+        className="bg-transparent bg-gradient-to-b from-black/80 md:from-black/0 to-white/0 fixed inset-x-0 top-0 z-50"
       >
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          {/* Logo */}
-          <Link
-            href={`/${locale}/`}
-            className="text-lg font-bold text-primary"
-          >
-            {siteName}
-          </Link>
-
-          {/* Desktop nav */}
-          <nav className="hidden items-center gap-1 md:flex">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="rounded-lg px-3 py-2 text-sm font-medium text-foreground/80 transition-colors hover:bg-foreground/5 hover:text-foreground"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-
-          {/* End section */}
-          <div className="flex items-center gap-2">
-            {languageSwitcher}
-
-            {/* Mobile hamburger */}
+          {/* Left: Menu burger */}
+          <div className="relative size-[56px] rounded-full flex items-center justify-center">
             <button
               type="button"
-              className="inline-flex items-center justify-center rounded-lg p-2 text-foreground/70 hover:bg-foreground/5 md:hidden"
+              className="text-2xl text-white"
               onClick={() => setMobileOpen(true)}
               aria-label={openMenuLabel}
             >
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-              >
-                <path
+              <div className="liquid-glass absolute top-0 left-0 w-full h-full">
+                <div className="liquid-glass--bend" />
+                <div className="liquid-glass--face" />
+                <div className="liquid-glass--edge" />
+              </div>
+              <span className="block z-10 relative">
+                <svg
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                  stroke="currentColor"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                />
-              </svg>
+                >
+                  <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+              </span>
+            </button>
+          </div>
+
+          {/* Center: Logo */}
+          <Link
+            href={`/${locale}/`}
+            className="absolute left-1/2 -translate-x-1/2 flex items-center"
+          >
+            <img
+              src="/logo.jpg"
+              alt={siteName}
+              className="h-10 w-auto"
+            />
+          </Link>
+
+          {/* Right: Search icon */}
+          <div className="relative size-[56px] rounded-full flex items-center justify-center">
+            <button
+              type="button"
+              className="text-2xl text-white"
+              aria-label="Search"
+              onClick={() => setSearchOpen(true)}
+            >
+              <div className="liquid-glass absolute top-0 left-0 w-full h-full">
+                <div className="liquid-glass--bend" />
+                <div className="liquid-glass--face" />
+                <div className="liquid-glass--edge" />
+              </div>
+              <span className="block z-10 relative">
+                <svg
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+              </span>
             </button>
           </div>
         </div>
       </header>
-
-      {/* Spacer to offset fixed header */}
-      <div className="h-16" />
 
       <MobileMenu
         open={mobileOpen}
@@ -117,6 +133,12 @@ export function HeaderClient({
         navLinks={navLinks}
         closeMenuLabel={closeMenuLabel}
         languageSwitcher={languageSwitcher}
+      />
+
+      <SearchModal
+        open={searchOpen}
+        onClose={() => setSearchOpen(false)}
+        dict={searchDict}
       />
     </>
   );
