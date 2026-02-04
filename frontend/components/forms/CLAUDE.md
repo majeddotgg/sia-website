@@ -453,3 +453,201 @@ When creating a new service form:
 ---
 
 **Reference Skill**: `/Users/majed/.claude/skills/react-hook-form-zod`
+
+---
+
+## Service Form Pages — REQUIRED PATTERN
+
+**IMPORTANT**: When creating a service form, ALWAYS create a **Service Info Page** first, then the form. Users must see service details before starting the form.
+
+### Service Info Page Structure
+
+Every service form must have a dedicated info page with:
+
+| Section (Arabic) | Section (English) | Description |
+|------------------|-------------------|-------------|
+| اسم الخدمة | Service Name | Title of the service |
+| وصف الخدمة | Service Description | What the service does |
+| إجراءات الخدمة | Service Procedures | Step-by-step process |
+| المستندات المطلوبة | Required Documents | List of needed documents |
+| الشروط والمتطلبات | Terms & Requirements | Eligibility criteria |
+| مدة إتمام الخدمة | Completion Time | Expected processing time |
+| قنوات استلام الخدمة | Service Channels | How to access the service |
+| الجمهور المستهدف | Target Audience | Who can use this service |
+| الدعم | Support | Contact/help information |
+
+### Service Channels (قنوات استلام الخدمة)
+Always include these two channels:
+- **الموقع الالكتروني 24/7** (Website 24/7)
+- **التطبيق الذكي 24/7** (Smart App 24/7)
+
+### Page Flow
+
+```
+/services/[service-name]/          → Service Info Page (details + "بدأ الخدمة" button)
+/services/[service-name]/form/     → Actual Form Page
+```
+
+### Service Info Page Template
+
+```typescript
+// app/[locale]/services/[service-name]/page.tsx
+import { getDictionary } from '@/lib/i18n/dictionaries';
+import { ServiceInfoCard } from '@/components/sections/ServiceInfoCard';
+import { Button } from '@/components/ui/Button';
+import Link from 'next/link';
+import type { Locale } from '@/types';
+
+export function generateStaticParams() {
+  return [{ locale: 'ar' }, { locale: 'en' }];
+}
+
+export default async function ServicePage({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}) {
+  const { locale } = await params;
+  const dict = await getDictionary(locale);
+
+  return (
+    <main className="container mx-auto px-4 py-12">
+      {/* Service Name */}
+      <h1 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100">
+        {dict.serviceName.title}
+      </h1>
+
+      {/* Service Description */}
+      <section className="mt-6">
+        <h2 className="text-xl font-semibold">{dict.common.serviceDescription}</h2>
+        <p className="mt-2 text-zinc-600 dark:text-zinc-400">
+          {dict.serviceName.description}
+        </p>
+      </section>
+
+      {/* Service Procedures */}
+      <section className="mt-6">
+        <h2 className="text-xl font-semibold">{dict.common.serviceProcedures}</h2>
+        <ol className="mt-2 list-inside list-decimal space-y-2">
+          {dict.serviceName.procedures.map((step, i) => (
+            <li key={i}>{step}</li>
+          ))}
+        </ol>
+      </section>
+
+      {/* Required Documents */}
+      <section className="mt-6">
+        <h2 className="text-xl font-semibold">{dict.common.requiredDocuments}</h2>
+        <ul className="mt-2 list-inside list-disc space-y-2">
+          {dict.serviceName.documents.map((doc, i) => (
+            <li key={i}>{doc}</li>
+          ))}
+        </ul>
+      </section>
+
+      {/* Terms & Requirements */}
+      <section className="mt-6">
+        <h2 className="text-xl font-semibold">{dict.common.termsRequirements}</h2>
+        <ul className="mt-2 list-inside list-disc space-y-2">
+          {dict.serviceName.requirements.map((req, i) => (
+            <li key={i}>{req}</li>
+          ))}
+        </ul>
+      </section>
+
+      {/* Completion Time */}
+      <section className="mt-6">
+        <h2 className="text-xl font-semibold">{dict.common.completionTime}</h2>
+        <p className="mt-2">{dict.serviceName.completionTime}</p>
+      </section>
+
+      {/* Service Channels */}
+      <section className="mt-6">
+        <h2 className="text-xl font-semibold">{dict.common.serviceChannels}</h2>
+        <ul className="mt-2 space-y-2">
+          <li className="flex items-center gap-2">
+            <span>🌐</span>
+            <span>{dict.common.website24_7}</span>
+          </li>
+          <li className="flex items-center gap-2">
+            <span>📱</span>
+            <span>{dict.common.smartApp24_7}</span>
+          </li>
+        </ul>
+      </section>
+
+      {/* Target Audience */}
+      <section className="mt-6">
+        <h2 className="text-xl font-semibold">{dict.common.targetAudience}</h2>
+        <p className="mt-2">{dict.serviceName.targetAudience}</p>
+      </section>
+
+      {/* Support */}
+      <section className="mt-6">
+        <h2 className="text-xl font-semibold">{dict.common.support}</h2>
+        <p className="mt-2">{dict.serviceName.support}</p>
+      </section>
+
+      {/* Start Service Button */}
+      <div className="mt-10">
+        <Link href={`/${locale}/services/service-name/form`}>
+          <Button variant="primary" size="lg">
+            {dict.common.startService} {/* بدأ الخدمة */}
+          </Button>
+        </Link>
+      </div>
+    </main>
+  );
+}
+```
+
+### Dictionary Structure for Service Pages
+
+```json
+// dictionaries/ar.json
+{
+  "common": {
+    "serviceDescription": "وصف الخدمة",
+    "serviceProcedures": "إجراءات الخدمة",
+    "requiredDocuments": "المستندات المطلوبة",
+    "termsRequirements": "الشروط والمتطلبات",
+    "completionTime": "مدة إتمام الخدمة",
+    "serviceChannels": "قنوات استلام الخدمة",
+    "website24_7": "الموقع الالكتروني 24/7",
+    "smartApp24_7": "التطبيق الذكي 24/7",
+    "targetAudience": "الجمهور المستهدف",
+    "support": "الدعم",
+    "startService": "بدأ الخدمة"
+  },
+  "serviceName": {
+    "title": "اسم الخدمة",
+    "description": "وصف تفصيلي للخدمة...",
+    "procedures": [
+      "الخطوة الأولى",
+      "الخطوة الثانية"
+    ],
+    "documents": [
+      "الهوية الإماراتية",
+      "جواز السفر"
+    ],
+    "requirements": [
+      "أن يكون مواطناً أو مقيماً",
+      "أن يكون فوق 18 سنة"
+    ],
+    "completionTime": "3-5 أيام عمل",
+    "targetAudience": "المواطنون والمقيمون",
+    "support": "للاستفسارات: 800-SIA"
+  }
+}
+```
+
+### Service Form Page Checklist
+
+When creating a new service form:
+
+1. [ ] Create service info page at `app/[locale]/services/[name]/page.tsx`
+2. [ ] Add all 9 sections (name, description, procedures, documents, requirements, time, channels, audience, support)
+3. [ ] Add "بدأ الخدمة" button linking to form page
+4. [ ] Create form page at `app/[locale]/services/[name]/form/page.tsx`
+5. [ ] Add dictionary entries for both languages
+6. [ ] Test RTL/LTR display

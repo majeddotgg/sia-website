@@ -335,6 +335,101 @@
       }
     }
   },
+  "fatwaRequest": {
+    "title": "Fatwa Request",
+    "subtitle": "Islamic Religious Ruling Inquiry Service",
+    "sections": {
+      "description": {
+        "title": "Service Description",
+        "content": "The Fatwa Request service allows citizens and residents to inquire about Islamic religious rulings in various aspects of life. A team of qualified scholars and muftis study the questions and respond based on evidence from the Quran and Sunnah."
+      },
+      "procedures": {
+        "title": "Service Procedures",
+        "steps": [
+          "Fill out the fatwa request form online",
+          "Select the question category (worship, transactions, family, ethics, other)",
+          "Write your question clearly and in detail",
+          "Submit the request and track its status",
+          "Receive the response via email or phone"
+        ]
+      },
+      "documents": {
+        "title": "Required Documents",
+        "items": [
+          "No documents required",
+          "Valid contact information is sufficient"
+        ]
+      },
+      "requirements": {
+        "title": "Terms & Requirements",
+        "items": [
+          "Formulate your question clearly and specifically",
+          "Provide valid contact information",
+          "Maintain proper etiquette when asking questions"
+        ]
+      },
+      "completionTime": {
+        "title": "Completion Time",
+        "value": "3-7 business days"
+      },
+      "channels": {
+        "title": "Service Channels",
+        "website": "Website 24/7",
+        "app": "Smart App 24/7"
+      },
+      "audience": {
+        "title": "Target Audience",
+        "value": "All citizens and residents of the United Arab Emirates"
+      },
+      "support": {
+        "title": "Support",
+        "description": "For inquiries and assistance:",
+        "phone": "065055888"
+      }
+    },
+    "sidebar": {
+      "startService": "Start Service Now",
+      "startButton": "Start Service"
+    },
+    "form": {
+      "title": "Fatwa Request Form",
+      "subtitle": "Please fill out the following form to submit your question",
+      "backToService": "Back to Service Details",
+      "name": "Full Name",
+      "namePlaceholder": "Enter your full name",
+      "email": "Email Address",
+      "emailPlaceholder": "example@email.com",
+      "phone": "Phone Number",
+      "phonePlaceholder": "05XXXXXXXX",
+      "category": "Question Category",
+      "categoryPlaceholder": "Select category",
+      "categories": {
+        "worship": "Worship",
+        "transactions": "Transactions",
+        "family": "Family",
+        "ethics": "Ethics",
+        "other": "Other"
+      },
+      "question": "Question Text",
+      "questionPlaceholder": "Write your question in detail here...",
+      "submit": "Submit Request",
+      "submitting": "Submitting...",
+      "successTitle": "Your request has been submitted successfully",
+      "successMessage": "Your question will be reviewed by qualified scholars and you will receive a response within 3-7 business days.",
+      "sendAnother": "Submit another question",
+      "infoNote": "All fatwas issued are based on evidence from the Quran and Sunnah, and are reviewed by a group of qualified scholars.",
+      "errors": {
+        "nameRequired": "Name is required",
+        "emailRequired": "Email is required",
+        "emailInvalid": "Invalid email address",
+        "phoneRequired": "Phone number is required",
+        "phoneInvalid": "Invalid phone number",
+        "categoryRequired": "Please select a question category",
+        "questionRequired": "Question text is required",
+        "questionMin": "Question must be at least 20 characters"
+      }
+    }
+  },
   "home": {
     "meta": {
       "title": "Home",
